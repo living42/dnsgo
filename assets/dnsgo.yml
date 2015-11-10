@@ -1,0 +1,37 @@
+debug: true
+listen: 127.0.0.1:9053
+listen_tcp: true
+listen_udp: true
+geoip_db: assets/GeoLite2-Country.mmdb
+
+resolvers:
+  - server:
+      - 223.5.5.5
+      - 223.6.6.6
+    compress: false
+    query_method: udp
+    timeout: 5
+    # domain_policy: included
+    # domain:
+    #   - ".google.com"
+
+    country_policy: excluded
+    country:
+      - CN
+
+  - server:
+      - 8.8.8.8
+      - 8.8.4.4
+      - 208.67.222.222:5353
+      - 208.67.220.220:5353
+    compress: true
+    query_method: tcp
+    timeout: 5
+    policy: included
+    # domain_policy: included
+    # domain:
+    #   - ".baidu.com"
+
+    country_policy: included
+    country:
+      - CN
